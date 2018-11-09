@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
 <body>
+    <a name="top"></a>
     <div id="background-sections">
         <div class="background-section"></div>
         <div class="background-section"></div>
@@ -10,15 +11,26 @@
         <div class="background-section"></div>
         <div class="background-section"></div>
     </div>
-    <div id="message-container"></div>
+    <div id="header">
+        <a href="#top"><p>Yo!</p></a>
+        <a href="#projects"><p>Cool Stuff</p></a>
+        <a href="#testimonials"><p>What (S)he Said</p></a>
+        <a href="#contact"><p>Say Hey!</p></a>
+    </div>
+    <div id="message-container">
+        <p id="message-greeting" class="message"></p>
+        <p id="message-body" class="message"></p>
+        <p id="message-salutation-line-one" class="message message-salutation"></p>
+        <p id="message-salutation-line-two" class="message message-salutation"></p>
+    </div>
     <div id="projects-section" class="section">
-        <h3>Title</h3>
+        <a name="projects"><h3>Title</h3></a>
     </div>
     <div id="testimonials-section" class="section">
-        <h3>Title</h3>
+        <a name="testimonials"><h3>Title</h3></a>
     </div>
     <div id="contact-section" class="section">
-        <h3>Title</h3>
+        <a name="contact"><h3>Title</h3></a>
     </div>
     <script src="scripts/index.js"></script>
 </body>

@@ -7,6 +7,12 @@ body{
     align-items: center;
     overflow: auto;
     overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+p{ 
+    font-family: Roboto;
 }
 
 .background-section{
@@ -30,36 +36,93 @@ body{
     height: 50vh;
 }
 
+#header{
+    width: 100vw;
+    height: 7vh;
+    position: fixed;
+    padding-right: 20px;
+    background-color: #160C28;
+    border-bottom: 3px solid #EFCB68;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    color: #CED0CE
+}
+
+#header a{
+    margin-right: 20px;
+    cursor: pointer;
+    color: #CED0CE;
+    text-decoration: none;
+}
+
+#header a:hover{
+    color: #EFCB68;
+}
+
 #message-container{
     width: 60%;
+    min-width: 200px;
     height: 60%;
     position: absolute;
     top: 20vh;
     left: 20vw;
     background-color: #E6E8E6;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23);
+    box-sizing: border-box;
+    padding: 50px;
+}
+
+#message-body{
+    text-indent: 10%;
+}
+
+.message-salutation{
+    text-indent: 60%;
+}
+
+.message{
+    font-size:2em;
+}
+
+.message:first-of-type{
+    margin: 0;
+}
+
+.message-salutation:nth-last-child(2){
+    margin-bottom: 0;
+}
+
+.message-salutation:last-of-type{
+    margin-top: 0;
+}
+
+#message-salutation-line-two{
+    text-indent: calc(60% + 20px);
 }
 
 .section{
     width: 100%;
     height: 100%;
+    padding: 10px;
     position: absolute;
     left: 0;
     background-color: transparent;
     text-align: center;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23);
+    box-sizing: border-box;
 }
 
 #projects-section{
     top: 100vh;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23);
 }
 
 #testimonials-section{
     top: 200vh;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23);
 }
 
 #contact-section{
     top: 300vh;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23);
 }
