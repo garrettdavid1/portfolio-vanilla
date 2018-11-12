@@ -1,10 +1,3 @@
-function run() {
-	
-	typeWelcomeMessage();
-
-	// typeWriter("Hello, I'm David.", document.getElementById('message'));
-}
-
 if (document.readyState!='loading'){
     run();
 } else if (document.addEventListener) {
@@ -20,38 +13,20 @@ if (document.readyState!='loading'){
     https://plainjs.com/javascript/events/running-code-when-the-document-is-ready-15/
 */
 
-typeWriter = (text, component, speed = 50, i = 0, callback) => {
-	component.innerHTML += text.charAt(i);
-    if (i < text.length) {
-        i++;
-        setTimeout(() => {
-            this.typeWriter(text, component, speed, i, callback);
-        }, speed);
-    } else if(callback){
-		setTimeout(callback, 500);
-	}
+function run() {
+	window.addEventListener('resize', () => {
+		sizeText();
+	});
+	sizeText();
+	typeWelcomeMessage();
 }
 
-typeMessagesSynchronously = (messageQueue) => {
-	let resultFunction;
-	if(messageQueue.length > 0){
-		resultFunction = getTypeWriterFunction(messageQueue, 0);
-	} else{
-		resultFunction = () => {};
-	}
-
-	resultFunction();
-}
-
-getTypeWriterFunction = (messageQueue, index) => {
-	const nextIndex = index + 1;
-	const message = messageQueue[index];
-	if(messageQueue[nextIndex]){
-		return () => {typeWriter(message.text, document.getElementById(message.elementId), 30, 0, getTypeWriterFunction(messageQueue, nextIndex))};
-	} else{
-		return () => {typeWriter(message.text, document.getElementById(message.elementId), 30, 0, null)};
-	}
-}
+sizeText = () => {
+	let messages = Array.from(document.getElementsByClassName('message'));
+	messages.forEach(message => {
+		message.style.fontSize = window.innerWidth / window.innerHeight + 'em';
+	})
+};
 
 typeWelcomeMessage = () => {
 	const messageQueue = [
@@ -62,4 +37,32 @@ typeWelcomeMessage = () => {
 	]
 
 	typeMessagesSynchronously(messageQueue)
-}
+};
+
+typeMessagesSynchronously = (messageQueue) => {
+	if(messageQueue.length > 0){
+		getTypeWriterFunction(messageQueue, 0)();
+	}
+};
+
+getTypeWriterFunction = (messageQueue, index) => {
+	const nextIndex = index + 1;
+	const message = messageQueue[index];
+	if(messageQueue[nextIndex]){
+		return () => {typeWriter(message.text, document.getElementById(message.elementId), 30, 0, getTypeWriterFunction(messageQueue, nextIndex))};
+	} else{
+		return () => {typeWriter(message.text, document.getElementById(message.elementId), 30, 0, null)};
+	}
+};
+
+typeWriter = (text, component, speed = 50, i = 0, callback) => {
+	component.innerHTML += text.charAt(i);
+    if (i < text.length) {
+        i++;
+        setTimeout(() => {
+            this.typeWriter(text, component, speed, i, callback);
+        }, speed);
+    } else if(callback){
+		setTimeout(callback, 500);
+	}
+};
