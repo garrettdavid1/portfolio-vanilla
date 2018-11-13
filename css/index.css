@@ -51,10 +51,10 @@ p{
 }
 
 #background-section-1{
-    background-image: url(content/images/carrying-cheerful.jpg);
+    background-image: url("/content/images/carrying-cheerful.jpg");
 }
 #background-section-3{
-    background-image: url(content/images/colleagues-friends-group.jpg);
+    background-image: url("/content/images/colleagues-friends-group.jpg");
 }
 
 #background-section-4{
