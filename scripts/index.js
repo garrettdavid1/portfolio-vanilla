@@ -24,16 +24,20 @@ function run() {
 sizeText = () => {
 	let messages = Array.from(document.getElementsByClassName('message'));
 	messages.forEach(message => {
-		message.style.fontSize = window.innerWidth / window.innerHeight + 'em';
+		if(window.innerWidth > window.innerHeight){
+			message.style.fontSize = window.innerWidth / window.innerHeight + 'em';
+		} else{
+			message.style.fontSize = window.innerHeight / window.innerWidth + 'em';
+		}
 	})
 };
 
 typeWelcomeMessage = () => {
 	const messageQueue = [
-		{text: 'Hey there!', elementId: 'message-greeting'},
+		// {text: 'Hey there!', elementId: 'message-greeting'},
 		{text: 'My name is David. My name is David. My name is David. My name is David. My name is David. My name is David. My name is David. My name is David. My name is David. ', elementId: 'message-body'},
-		{text: 'Sincerely,', elementId: 'message-salutation-line-one'},
-		{text: 'Me', elementId: 'message-salutation-line-two'},
+		// {text: 'Sincerely,', elementId: 'message-salutation-line-one'},
+		// {text: 'Me', elementId: 'message-salutation-line-two'},
 	]
 
 	typeMessagesSynchronously(messageQueue)
